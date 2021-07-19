@@ -1,0 +1,24 @@
+Set up AutoML Vision
+
+From the Navigation menu, select APIs & Services > Library.
+
+In the search bar type in "Cloud AutoML". Click on the Cloud AutoML API result and then click Enable.
+
+
+In Cloud Shell use the following commands to create environment variables for you Project ID and Username, replacing <USERNAME> with the User Name you logged into the lab with:
+
+export PROJECT_ID=$DEVSHELL_PROJECT_ID
+export QWIKLABS_USERNAME=<USERNAME>
+Run the following command to give AutoML permissions:
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="user:$QWIKLABS_USERNAME" \
+    --role="roles/automl.admin"
+Now create a storage bucket by running the following:
+
+gsutil mb -p $PROJECT_ID \
+    -c standard    \
+    -l us-central1 \
+    gs://$PROJECT_ID-vcm/
+
+    

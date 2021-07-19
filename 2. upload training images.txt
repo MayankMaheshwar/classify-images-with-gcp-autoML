@@ -1,0 +1,13 @@
+In order to train a model to classify images of clouds, you need to provide labeled training data so the model can develop an understanding of the image features associated with different types of clouds. In this example your model will learn to classify three different types of clouds: cirrus, cumulus, and cumulonimbus. To use AutoML Vision you need to put your training images in Cloud Storage.
+
+Before adding the cloud images, create an environment variable with the name of your bucket.
+
+Run the following command in Cloud Shell:
+
+export BUCKET=$PROJECT_ID-vcm
+
+The training images are publicly available in a Cloud Storage bucket.
+
+Use the gsutil command line utility for Cloud Storage to copy the training images into your bucket:
+
+gsutil -m cp -r gs://spls/gsp223/images/* gs://${BUCKET}

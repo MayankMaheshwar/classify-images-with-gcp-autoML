@@ -1,0 +1,31 @@
+Now that your training data is in Cloud Storage, you need a way for AutoML Vision to access it. You'll create a CSV file where each row contains a URL to a training image and the associated label for that image. This CSV file has been created for you; you just need to update it with your bucket name.
+
+Run the following command to copy the file to your Cloud Shell instance:
+
+gsutil cp gs://spls/gsp223/data.csv .
+
+
+Then update the CSV with the files in your project:
+
+sed -i -e "s/placeholder/${BUCKET}/g" ./data.csv
+
+Now upload this file to your Cloud Storage bucket:
+
+gsutil cp ./data.csv gs://${BUCKET}
+
+
+Navigate back to the AutoML Vision tab
+
+At the top of the console, click + NEW DATASET.
+
+Type "clouds" for the Dataset name.
+
+Select "Single-Label Classification".
+
+Click Create Dataset.
+
+Choose Select a CSV file on Cloud Storage and add the file name to the URL for the file you just uploaded - gs://your-bucket-name/data.csv
+
+
+Inspect image
+
